@@ -1,0 +1,23 @@
+.passwordBtn {
+    position : relative;
+    left: 330px;
+    bottom: 45px;
+}
+
+.dupleCheckBtn {
+    position : relative;
+    left: 300px;
+    bottom: 45px;
+    width: 90px;
+}
+
+.id_box, .pw_box {
+    height: 72px;
+}
+
+.register_title {
+    padding: 5px;
+    font-weight: 900;
+
+}
+
