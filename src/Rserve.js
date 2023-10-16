@@ -26,11 +26,11 @@ function Login() {
   const handleSubmit = (event) => {
     event.preventDefault();
     const data = new FormData(event.target);
-    const email = data.get("email");
+    const id = data.get("id");
     const password = data.get("password");
 
     //ApiService의 signin 메소드를 사용해 로그인
-    signin({ email: email, password: password });
+    signin({ id: id, password: password });
   };
 
   return (
@@ -48,10 +48,10 @@ function Login() {
               variant="outlined"
               required
               fullWidth
-              id="email"
-              label="이메일 주소"
-              name="email"
-              autoComplete="email"
+              id="id"
+              label="사용자 아이디"
+              name="id"
+              autoComplete="id"
             />
           </Grid>
           <Grid item xs={12}>

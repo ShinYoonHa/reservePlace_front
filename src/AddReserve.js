@@ -2,7 +2,7 @@ import { Button, Grid, Paper, TextField } from "@material-ui/core";
 import React, { useState } from "react";
 import "./App.css";
 
-function AddTodo({ add }) {
+function AddReserve({ add }) {
   const [item, setItem] = useState({ title: "" });
 
   const onInputChange = (e) => {
@@ -28,7 +28,7 @@ function AddTodo({ add }) {
       <Grid container>
         <Grid xs={11} md={11} item style={{ paddingRight: 16 }}>
           <TextField
-            placeholder="Add Todo here"
+            placeholder="Add Reserve here"
             fullWidth
             onChange={onInputChange}
             value={item.title}
@@ -51,4 +51,4 @@ function AddTodo({ add }) {
   );
 }
 
-export default AddTodo;
+export default AddReserve;

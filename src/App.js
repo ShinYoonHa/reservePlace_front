@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import Todo from "./Todo";
+import Reserve from "./Rserve";
 import {
   AppBar,
   Button,
@@ -10,7 +10,7 @@ import {
   Toolbar,
   Typography,
 } from "@material-ui/core";
-import AddTodo from "./AddTodo";
+import AddReserve from "./AddReserve";
 import { call, signout } from "./service/ApiService";
 import DeleteChecked from "./DeleteChecked";
 import "./App.css";
@@ -24,24 +24,26 @@ function App() {
 
   // add 함수 추가
   const add = (item) => {
-    call("/todo", "POST", item).then((response) => setItems(response.data));
+    call("/Reserve", "POST", item).then((response) => setItems(response.data));
   };
 
   //delete 함수 추가
   const deleteHandler = (item) => {
-    call("/todo", "DELETE", item).then((response) => setItems(response.data));
+    call("/Reserve", "DELETE", item).then((response) =>
+      setItems(response.data)
+    );
   };
 
   const update = (item) => {
-    call("/todo", "PUT", item).then((response) => setItems(response.data));
+    call("/Reserve", "PUT", item).then((response) => setItems(response.data));
   };
 
   const deleteForCompleted = () => {
     const thisItems = items;
     thisItems.map((e) => {
-      //todoList 목록을 돌면서 '수행완료' 된 리스트 삭제
+      //ReserveList 목록을 돌면서 '수행완료' 된 리스트 삭제
       if (e.done === true) {
-        call("/todo", "DELETE", e).then((response) => {
+        call("/Reserve", "DELETE", e).then((response) => {
           setItems(response.data);
         });
       }
@@ -49,7 +51,7 @@ function App() {
   };
 
   useEffect(() => {
-    call("/todo", "GET", null).then((response) => {
+    call("/Reserve", "GET", null).then((response) => {
       setItems(response.data);
       setLoading(false);
     });
@@ -59,11 +61,11 @@ function App() {
   const indexOfFirstItem = indexOfLastItem - itemsPerPage;
   const currentItems = items.slice(indexOfFirstItem, indexOfLastItem);
 
-  var todoItems = currentItems.length > 0 && (
+  var ReserveItems = currentItems.length > 0 && (
     <Paper style={{ margin: 16 }}>
       <List>
         {currentItems.map((item, idx) => (
-          <Todo
+          <Reserve
             item={item}
             key={item.id}
             delete={deleteHandler}
@@ -94,13 +96,13 @@ function App() {
   );
 
   //loading 중이 아닐 때
-  var todoListPage = (
+  var ReserveListPage = (
     <>
       <Grid justifyContent="center" container>
         {navigationBar}
         <Container>
-          <AddTodo add={add} />
-          <div className="TodoList">{todoItems}</div>
+          <AddReserve add={add} />
+          <div className="ReserveList">{ReserveItems}</div>
         </Container>
       </Grid>
       <Grid justifyContent="center" container>
@@ -127,7 +129,7 @@ function App() {
   var content = loadingPage;
 
   if (!loading) {
-    content = todoListPage;
+    content = ReserveListPage;
   }
 
   // 생성된 컴포넌트 JPX를 리턴한다.
