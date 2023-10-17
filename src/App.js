@@ -12,7 +12,6 @@ import {
 } from "@material-ui/core";
 import AddTodo from "./AddTodo";
 import { call, signout } from "./service/ApiService";
-import DeleteChecked from "./DeleteChecked";
 import "./App.css";
 import "./SignUp.css";
 
