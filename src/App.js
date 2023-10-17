@@ -82,7 +82,7 @@ function App() {
             <Typography variant="h6">공간예약 플랫폼</Typography>
           </Grid>
           <Grid item>
-            <Button color="inherit">회원정보수정</Button>
+            <Button color="inherit">마이페이지</Button>
             <Button color="inherit" onClick={signout}>
               로그아웃
             </Button>

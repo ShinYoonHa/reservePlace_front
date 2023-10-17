@@ -9,7 +9,7 @@ import {
   Toolbar,
 } from "@material-ui/core";
 import React, { useState } from "react";
-import { signup } from "./service/ApiService";
+import { signout, signup } from "./service/ApiService";
 
 function Modify() {
   const handleSubmit = (event) => {
@@ -26,7 +26,7 @@ function Modify() {
       uid: uid,
       password: password,
     }).then((response) => {
-      window.location.href = "/login";
+      window.location.href = "/todo";
     });
   };
 
@@ -39,7 +39,9 @@ function Modify() {
             <Typography variant="h6">공간예약 플랫폼</Typography>
           </Grid>
           <Grid item>
-            <Button color="inherit">로그아웃</Button>
+            <Button color="inherit" onClick={signout}>
+              로그아웃
+            </Button>
           </Grid>
         </Grid>
       </Toolbar>
@@ -72,7 +74,7 @@ function Modify() {
       <Grid justifyContent="center" container>
         {modifyBar}
       </Grid>
-      <Container component="main" maxWidth="xs" style={{ marginTop: "8%" }}>
+      <Container component="main" maxWidth="xs" style={{ marginTop: "4%" }}>
         <Grid container spacing={2}>
           <Grid item>
             <Typography component="h1" variant="h4" className="register_title">
@@ -125,19 +127,6 @@ function Modify() {
                 fullWidth
                 id="password"
                 label="패스워드"
-                autoFocus
-              />
-            </Grid>
-            <Grid item xs={12} className="pw_box">
-              <TextField
-                autoComplete="current-password"
-                name="password"
-                variant="outlined"
-                required
-                fullWidth
-                id="password"
-                label="패스워드 확인"
-                autoFocus
               />
             </Grid>
             <Grid item xs={12} className="signupBtn">

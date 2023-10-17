@@ -13,12 +13,9 @@ function AppRouter() {
         <Routes>
           <Route path="/login" element={<Login />} />
           <Route path="/signup" element={<SignUp />} />
-          <Route path="/Modify" element={<Modify />} />
+          <Route path="/modify" element={<Modify />} />
           <Route path="/" element={<App />} />
         </Routes>
-      </div>
-      <div>
-        <Box mt={5}>{/* <Copyright /> */}</Box>
       </div>
     </BrowserRouter>
   );
