@@ -4,29 +4,31 @@ import {
   Grid,
   TextField,
   Typography,
-  Link,
   AppBar,
   Toolbar,
 } from "@material-ui/core";
-import React, { useState } from "react";
-import { signout, signup } from "./service/ApiService";
+import React from "react";
+import { mypage, signout } from "./service/ApiService";
 
-function Modify() {
+function MyPage() {
   const handleSubmit = (event) => {
     event.preventDefault();
 
     const data = new FormData(event.target);
-    const username = data.get("username");
     const uid = data.get("uid");
+    const username = data.get("username");
     const password = data.get("password");
     const phone = data.get("phone");
-    signup({
-      username: username,
-      phone: phone,
+
+    // ApiService의 회원정보 수정 함수 호출
+    mypage({
       uid: uid,
+      username: username,
       password: password,
+      phone: phone,
     }).then((response) => {
-      window.location.href = "/todo";
+      // 재 로그인
+      window.location.href = "/login";
     });
   };
 
@@ -56,10 +58,10 @@ function Modify() {
             <Button>진행중인 예약</Button>
           </Grid>
           <Grid item>
-            <Button>회원정보수정</Button>
+            <Button href="/mypage">회원정보수정</Button>
           </Grid>
           <Grid item>
-            <Button>회원탈퇴</Button>
+            <Button href="/withdraw">회원탈퇴</Button>
           </Grid>
         </Grid>
       </Toolbar>
@@ -89,10 +91,12 @@ function Modify() {
                 autoComplete="uid"
                 name="uid"
                 variant="outlined"
+                defaultValue={localStorage.getItem("uid")}
                 fullWidth
-                disabled
+                InputProps={{
+                  readOnly: true,
+                }}
                 id="uid"
-                label="로그인된 아이디"
               />
             </Grid>
             <Grid item xs={12}>
@@ -104,7 +108,6 @@ function Modify() {
                 fullWidth
                 id="username"
                 label="성명"
-                autoFocus
               />
             </Grid>
             <Grid item xs={12}>
@@ -129,7 +132,7 @@ function Modify() {
                 label="패스워드"
               />
             </Grid>
-            <Grid item xs={12} className="signupBtn">
+            <Grid item xs={12} className="modifyBtn">
               <Button
                 type="submit"
                 fullWidth
@@ -146,4 +149,4 @@ function Modify() {
   );
 }
 
-export default Modify;
+export default MyPage;

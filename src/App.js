@@ -11,7 +11,7 @@ import {
   Typography,
 } from "@material-ui/core";
 import AddTodo from "./AddTodo";
-import { call, signout } from "./service/ApiService";
+import { call, infoedit_route, signout } from "./service/ApiService";
 import "./App.css";
 import "./SignUp.css";
 
@@ -33,18 +33,6 @@ function App() {
 
   const update = (item) => {
     call("/todo", "PUT", item).then((response) => setItems(response.data));
-  };
-
-  const deleteForCompleted = () => {
-    const thisItems = items;
-    thisItems.map((e) => {
-      //todoList 목록을 돌면서 '수행완료' 된 리스트 삭제
-      if (e.done === true) {
-        call("/todo", "DELETE", e).then((response) => {
-          setItems(response.data);
-        });
-      }
-    });
   };
 
   useEffect(() => {
@@ -82,7 +70,9 @@ function App() {
             <Typography variant="h6">공간예약 플랫폼</Typography>
           </Grid>
           <Grid item>
-            <Button color="inherit">마이페이지</Button>
+            <Button color="inherit" onClick={infoedit_route}>
+              마이페이지
+            </Button>
             <Button color="inherit" onClick={signout}>
               로그아웃
             </Button>
