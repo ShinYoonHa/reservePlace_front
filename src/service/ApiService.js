@@ -105,9 +105,14 @@ export function mypage(userDTO) {
   });
 }
 
-export function infoedit_route() {
+//회원 탈퇴 요청
+export function withdraw(userDTO) {
   //info edit
-  window.location.href = "/mypage";
+  return call_user("/auth/withdraw", "DELETE", userDTO).then((response) => {
+    if (response.id) {
+      window.location.href = "/";
+    }
+  });
 }
 
 //로그아웃

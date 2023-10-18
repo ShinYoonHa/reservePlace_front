@@ -58,7 +58,9 @@ function MyPage() {
             <Button>진행중인 예약</Button>
           </Grid>
           <Grid item>
-            <Button href="/mypage">회원정보수정</Button>
+            <Button href="/mypage">
+              <strong>회원정보수정</strong>
+            </Button>
           </Grid>
           <Grid item>
             <Button href="/withdraw">회원탈퇴</Button>

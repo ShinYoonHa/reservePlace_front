@@ -70,7 +70,7 @@ function App() {
             <Typography variant="h6">공간예약 플랫폼</Typography>
           </Grid>
           <Grid item>
-            <Button color="inherit" onClick={infoedit_route}>
+            <Button color="inherit" href="/mypage">
               마이페이지
             </Button>
             <Button color="inherit" onClick={signout}>

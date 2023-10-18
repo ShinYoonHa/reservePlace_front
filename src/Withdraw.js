@@ -8,22 +8,20 @@ import {
   Toolbar,
 } from "@material-ui/core";
 import React from "react";
-import { signout, mypage } from "./service/ApiService";
+import { signout, mypage, withdraw } from "./service/ApiService";
 
 function Withdraw() {
   const handleSubmit = (event) => {
     event.preventDefault();
 
-    const data = new FormData(event.target);
-    const uid = data.get("uid");
-
-    // ApiService의 회원정보 수정 함수 호출
-    mypage({
-      uid: uid,
+    //ApiService의 회원탈퇴 함수 호출
+    withdraw({
+      uid: localStorage.getItem("uid"),
     }).then((response) => {
       // 재 로그인
       window.location.href = "/login";
     });
+    console.log();
   };
 
   //navigationBar
@@ -55,7 +53,9 @@ function Withdraw() {
             <Button href="/mypage">회원정보수정</Button>
           </Grid>
           <Grid item>
-            <Button href="/withdraw">회원탈퇴</Button>
+            <Button href="/withdraw">
+              <strong>회원탈퇴</strong>
+            </Button>
           </Grid>
         </Grid>
       </Toolbar>
