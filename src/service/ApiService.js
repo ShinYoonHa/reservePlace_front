@@ -1,4 +1,6 @@
 import { API_BASE_URL } from "../app-config";
+import swal from "sweetalert";
+import "./Service.css";
 
 export function call(api, method, request) {
   let headers = new Headers({
@@ -64,16 +66,28 @@ export function call_user(api, method, request) {
 
 //로그인을 위한 API 서비스 메소드 signin
 export function signin(userDTO) {
-  return call("/auth/signin", "POST", userDTO).then((response) => {
-    if (response.token) {
-      //local 스토리지에 토큰 저장
-      localStorage.setItem("ACCESS_TOKEN", response.token);
-      //token이 존재하는 경우 todo 화면으로 redirect
-      localStorage.setItem("uid", response.uid);
-
-      window.location.href = "/";
-    }
-  });
+  return call("/auth/signin", "POST", userDTO)
+    .then((response) => {
+      if (response.token) {
+        //local 스토리지에 토큰 저장
+        localStorage.setItem("ACCESS_TOKEN", response.token);
+        //token이 존재하는 경우 todo 화면으로 redirect
+        localStorage.setItem("uid", response.uid);
+        window.location.href = "/";
+      }
+    })
+    .catch((e) => {
+      if (e.error == "Login failed") {
+        swal({
+          title: "오류",
+          text: "아이디 또는 비밀번호가 일치하지 않습니다.",
+          icon: "warning",
+          button: "확인",
+        }).then(() => {
+          window.location.href = "/login";
+        });
+      }
+    });
 }
 
 //회원 가입 요청
@@ -87,7 +101,6 @@ export function signup(userDTO) {
     .catch((error) => {
       console.log("Oops!");
       console.log(error.status);
-      console.log("Oops!");
       if (error.status === 403) {
         window.location.href = "/auth/signup";
       }
