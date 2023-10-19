@@ -5,6 +5,7 @@ import Login from "./Login";
 import SignUp from "./SignUp";
 import MyPage from "./MyPage";
 import Withdraw from "./Withdraw";
+import MyReserve from "./MyReserve";
 
 function AppRouter() {
   return (
@@ -15,6 +16,7 @@ function AppRouter() {
           <Route path="/signup" element={<SignUp />} />
           <Route path="/mypage" element={<MyPage />} />
           <Route path="/withdraw" element={<Withdraw />} />
+          <Route path="/myreserve" element={<MyReserve />} />
           <Route path="/" element={<App />} />
         </Routes>
       </div>

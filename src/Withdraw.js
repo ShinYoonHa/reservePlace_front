@@ -8,7 +8,7 @@ import {
   Toolbar,
 } from "@material-ui/core";
 import React from "react";
-import { signout, mypage, withdraw } from "./service/ApiService";
+import { signout, withdraw } from "./service/ApiService";
 
 function Withdraw() {
   const handleSubmit = (event) => {
