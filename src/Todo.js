@@ -1,97 +1,57 @@
 import React, { useState } from "react";
-import {
-  Button,
-  Container,
-  Grid,
-  TextField,
-  Typography,
-  Link,
-} from "@material-ui/core";
-import { signin } from "./service/ApiService";
+import { IconButton, Box, Button } from "@material-ui/core";
+import { DeleteOutline } from "@material-ui/icons";
 import "./App.css";
+import { ImageList, ImageListItem, ImageListItemBar } from "@mui/material";
 
-function Login() {
-  const [showPassword, setShowPassword] = useState("password");
+function Todo(props) {
+  const [item, setItem] = useState(props.item);
+  const [readOnly, setReadOnly] = useState(true);
 
-  const handleShowPassword = () => {
-    setShowPassword(() => {
-      if (showPassword == "password") {
-        return "text";
-      } else {
-        return "password";
-      }
-    });
+  const deleteEventHandler = () => {
+    props.delete(item);
+  };
+  const offReadOnlyMode = () => {
+    setReadOnly(false);
   };
 
-  const handleSubmit = (event) => {
-    event.preventDefault();
-    const data = new FormData(event.target);
-    const email = data.get("email");
-    const phone = data.get("phone");
-    const password = data.get("password");
+  const enterKeyEventHandler = (e) => {
+    if (e.key === "Enter") {
+      setReadOnly(true);
+      props.update(item);
+    }
+  };
 
-    //ApiService의 signin 메소드를 사용해 로그인
-    signin({ email: email, phone: phone, password: password });
+  const editEventHandler = (e) => {
+    const thisItem = { ...item };
+    thisItem.title = e.target.value;
+    setItem(thisItem);
   };
 
   return (
-    <Container component="main" maxWidth="xs" style={{ marginTop: "8%" }}>
-      <Grid container spacing={2}>
-        <Typography component="h1" variant="h5">
-          로그인
-        </Typography>
-      </Grid>
-      <form noValidate onSubmit={handleSubmit}>
-        {" "}
-        <Grid container spacing={2}>
-          <Grid item xs={12}>
-            <TextField
-              variant="outlined"
-              required
-              fullWidth
-              id="email"
-              label="이메일 주소"
-              name="email"
-              autoComplete="email"
-            />
-          </Grid>
-          <Grid item xs={12}>
-            <TextField
-              variant="outlined"
-              required
-              fullWidth
-              id="phone"
-              label="휴대폰 번호"
-              name="phone"
-              autoComplete="phone"
-            />
-          </Grid>
-          <Grid item xs={12}>
-            <TextField
-              type={showPassword}
-              variant="outlined"
-              required
-              fullWidth
-              id="password"
-              label="패스워드"
-              name="password"
-              autoComplete="password"
-            />
-            <Button className="passwordBtn" onClick={handleShowPassword}>
-              🔒
-            </Button>
-          </Grid>
-          <Grid item xs={12}>
-            <Button type="submit" fullWidth variant="contained" color="primary">
-              로그인
-            </Button>
-          </Grid>
-          <Link href="/signup" variant="body2">
-            <Grid item>계정이 없습니까? 여기서 가입하세요.</Grid>
-          </Link>
-        </Grid>
-      </form>
-    </Container>
+    <Button href="#">
+      <Box className="todoBox">
+        {/* <ImageListItem key={item.img} */}
+        <ImageListItem key={1} sx={{ width: 400 }}>
+          <img src="img/room.jpg" alt="스터디룸 이미지" loading="lazy" />
+          <IconButton
+            aria-label="Delete"
+            onClick={deleteEventHandler}
+            className="deleteBtn"
+          >
+            <DeleteOutline />
+          </IconButton>
+          <ImageListItemBar
+            className="imageListBar"
+            title="봄봄 스터디"
+            subtitle="경북 구미시 대학로 61"
+            position="below"
+            style={{ padding: 10 }}
+          />
+        </ImageListItem>
+      </Box>
+    </Button>
   );
 }
-export default Login;
+
+export default Todo;

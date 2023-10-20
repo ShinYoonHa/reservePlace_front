@@ -19,7 +19,7 @@ function App() {
   const [items, setItems] = useState([]);
   const [loading, setLoading] = useState(true);
   const [currentPage, setCurrentPage] = useState(1);
-  const [itemsPerPage, setItemsPerPage] = useState(6);
+  const [itemsPerPage, setItemsPerPage] = useState(5);
 
   // add 함수 추가
   const add = (item) => {
@@ -48,7 +48,7 @@ function App() {
 
   var todoItems = currentItems.length > 0 && (
     <Paper style={{ margin: 16 }}>
-      <List className="todoTemplate">
+      <List>
         {currentItems.map((item, idx) => (
           <Todo
             item={item}
@@ -89,8 +89,8 @@ function App() {
         {navigationBar}
         <Container>
           <AddTodo add={add} />
+          <div className="TodoList">{todoItems}</div>
         </Container>
-        <div className="TodoList">{todoItems}</div>
       </Grid>
       <Grid justifyContent="center" container>
         <Grid item className="Pagination">

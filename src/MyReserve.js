@@ -40,7 +40,11 @@ function MyReserve() {
       <Toolbar>
         <Grid justifyContent="space-between" container>
           <Grid item>
-            <Typography variant="h6">공간예약 플랫폼</Typography>
+            <Button href="/">
+              <Typography variant="h6" style={{ color: "white" }}>
+                공간예약 플랫폼
+              </Typography>
+            </Button>
           </Grid>
           <Grid item>
             <Button color="inherit" onClick={signout}>
@@ -57,7 +61,7 @@ function MyReserve() {
       <Toolbar className="modifyBar">
         <Grid justifyContent="flex-start" container>
           <Grid item>
-            <Button>
+            <Button href="/myreserve">
               <strong>진행중인 예약</strong>
             </Button>
           </Grid>

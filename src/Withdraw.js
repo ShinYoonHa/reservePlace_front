@@ -30,7 +30,11 @@ function Withdraw() {
       <Toolbar>
         <Grid justifyContent="space-between" container>
           <Grid item>
-            <Typography variant="h6">공간예약 플랫폼</Typography>
+            <Button href="/">
+              <Typography variant="h6" style={{ color: "white" }}>
+                공간예약 플랫폼
+              </Typography>
+            </Button>
           </Grid>
           <Grid item>
             <Button color="inherit" onClick={signout}>
@@ -47,7 +51,7 @@ function Withdraw() {
       <Toolbar className="modifyBar">
         <Grid justifyContent="flex-start" container>
           <Grid item>
-            <Button>진행중인 예약</Button>
+            <Button href="/myreserve">진행중인 예약</Button>
           </Grid>
           <Grid item>
             <Button href="/mypage">회원정보수정</Button>

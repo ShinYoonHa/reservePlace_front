@@ -6,6 +6,7 @@ import {
   Typography,
   AppBar,
   Toolbar,
+  Link,
 } from "@material-ui/core";
 import React from "react";
 import { mypage, signout } from "./service/ApiService";
@@ -38,7 +39,11 @@ function MyPage() {
       <Toolbar>
         <Grid justifyContent="space-between" container>
           <Grid item>
-            <Typography variant="h6">공간예약 플랫폼</Typography>
+            <Button href="/">
+              <Typography variant="h6" style={{ color: "white" }}>
+                공간예약 플랫폼
+              </Typography>
+            </Button>
           </Grid>
           <Grid item>
             <Button color="inherit" onClick={signout}>
@@ -55,7 +60,7 @@ function MyPage() {
       <Toolbar className="modifyBar">
         <Grid justifyContent="flex-start" container>
           <Grid item>
-            <Button>진행중인 예약</Button>
+            <Button href="/myreserve">진행중인 예약</Button>
           </Grid>
           <Grid item>
             <Button href="/mypage">
@@ -99,6 +104,7 @@ function MyPage() {
                   readOnly: true,
                 }}
                 id="uid"
+                label="아이디"
               />
             </Grid>
             <Grid item xs={12}>
