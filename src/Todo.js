@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import { IconButton, Box, Button } from "@material-ui/core";
-import { DeleteOutline } from "@material-ui/icons";
+import { DeleteOutline, Star, StarOutline } from "@material-ui/icons";
 import "./App.css";
 import { ImageList, ImageListItem, ImageListItemBar } from "@mui/material";
 
@@ -29,7 +29,7 @@ function Todo(props) {
   };
 
   return (
-    <Button href="#">
+    <Button href="/detail">
       <Box className="todoBox">
         {/* <ImageListItem key={item.img} */}
         <ImageListItem key={1} sx={{ width: 400 }}>
@@ -43,11 +43,11 @@ function Todo(props) {
           </IconButton>
           <ImageListItemBar
             className="imageListBar"
-            title="봄봄 스터디"
+            title="봄봄 스터디 ★4.5"
             subtitle="경북 구미시 대학로 61"
             position="below"
             style={{ padding: 10 }}
-          />
+          ></ImageListItemBar>
         </ImageListItem>
       </Box>
     </Button>

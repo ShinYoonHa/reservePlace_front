@@ -11,6 +11,7 @@ import {
 import React from "react";
 import { mypage, signout } from "./service/ApiService";
 import swal from "sweetalert";
+import Swal from "sweetalert2";
 
 function MyReserve() {
   const handleSubmit = (event) => {
@@ -121,8 +122,21 @@ function MyReserve() {
               variant="contained"
               color="primary"
               onClick={() => {
-                swal({
-                  content: number,
+                Swal.fire({
+                  title: "얼마나 만족하셨나요?",
+                  icon: "question",
+                  input: "range",
+                  inputLabel: "공간에 대한 만족도를 평가해주세요",
+                  inputAttributes: {
+                    min: 0,
+                    max: 5,
+                    step: 1,
+                    id: "hj",
+                  },
+                  inputValue: 5,
+                  preConfirm: (value) => {
+                    console.log(value);
+                  },
                 });
               }}
             >

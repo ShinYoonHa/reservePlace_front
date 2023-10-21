@@ -67,7 +67,11 @@ function App() {
       <Toolbar>
         <Grid justifyContent="space-between" container>
           <Grid item>
-            <Typography variant="h6">공간예약 플랫폼</Typography>
+            <Button href="/">
+              <Typography variant="h6" style={{ color: "white" }}>
+                공간예약 플랫폼
+              </Typography>
+            </Button>
           </Grid>
           <Grid item>
             <Button color="inherit" href="/mypage">
