@@ -92,3 +92,24 @@ input:valid + span::after {
     text-align: center;
     line-height: 30px;
 }
+
+#modalWrap {
+    position: fixed; /* Stay in place */
+    z-index: 200; /* Sit on top */
+    padding: 20px; /* Location of the box */
+    top: 0;
+    margin-left: -100px;
+    width: 90%;
+    background-color: rgba(81, 81, 81, 0.686); /* Black w/ opacity */
+    display: none;
+
+}
+
+#modalBack {
+    background-color: white;
+    border: 1px solid rgba(108, 108, 108, 0.545);
+    padding-top: 30px;
+    padding-bottom: 20px;
+    
+
+}

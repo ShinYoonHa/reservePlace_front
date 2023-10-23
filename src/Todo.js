@@ -29,7 +29,7 @@ function Todo(props) {
   };
 
   return (
-    <Button href="/detail">
+    <Button className="todoBtn" href="/detail">
       <Box className="todoBox">
         {/* <ImageListItem key={item.img} */}
         <ImageListItem key={1} sx={{ width: 400 }}>

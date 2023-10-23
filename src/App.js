@@ -47,7 +47,7 @@ function App() {
   const currentItems = items.slice(indexOfFirstItem, indexOfLastItem);
 
   var todoItems = currentItems.length > 0 && (
-    <Paper style={{ margin: 16 }}>
+    <Paper style={{ margin: 8 }}>
       <List className="todoTemplate">
         {currentItems.map((item, idx) => (
           <Todo
